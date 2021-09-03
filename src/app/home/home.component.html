@@ -20,10 +20,29 @@
 <div class="container ma-top">
     <div class="row">
         <div class="col">
-            <img src="../../assets/background.jpg">
+            <img class="img-background" src="../../assets/background.jpg" alt="Planejamento com planning poker">
         </div>
         <div class="col">
-            bb
+            <form class="form-detail">
+                <div class="mb-3">
+                  <p class="title-form">Começe a planejar agora!</p>
+                  <label class="form-label">Nome</label>
+                  <input type="text" class="form-control input-borda">
+                  <div class="form-text">Ex: Ana da Silva.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nome da sala</label>
+                  <input type="text" class="form-control input-borda">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sistema de votação</label>
+                    <select class="form-select input-borda">
+                        <option value="1">Fibonacci</option>
+                        <option value="2">Fibonacci curto</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Criar</button>
+            </form>
         </div>
     </div>
 </div>

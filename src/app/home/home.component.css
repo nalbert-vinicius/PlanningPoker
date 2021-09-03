@@ -5,3 +5,22 @@
 .ma-top{
     margin-top: 90px!important;
 }
+
+.input-borda{
+    border-radius: 20px;
+}
+
+.form-detail{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.img-background{
+    width: 90%;
+    height: 90%;
+}
+
+.title-form{
+    text-align: center;
+    font-size: 30px;
+}

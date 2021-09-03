@@ -1,0 +1,17 @@
+{
+  "name": "server_backend",
+  "version": "1.0.0",
+  "description": "server websocket planning poker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Nalbert e Gedion",
+  "license": "ISC",
+  "dependencies": {
+    "@types/socket.io": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^4.1.3"
+  }
+}
