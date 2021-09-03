@@ -10,7 +10,7 @@
                         <a class="nav-link" href=""><i class="bi bi-joystick"> CRIAR SESSÃO</i></a>
                     </li>
                     <li>
-                        <a class="nav-link" href=""><i class="bi bi-box-arrow-in-right"> ENTRAR SESSÃO</i></a>
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#entrarSessao" href=""><i class="bi bi-box-arrow-in-right"> ENTRAR SESSÃO</i></a>
                     </li>
                 </ul> 
             </div>       
@@ -41,8 +41,37 @@
                         <option value="2">Fibonacci curto</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Criar</button>
+                <button type="submit" class="btn btn-primary  button-border">Criar</button>
             </form>
         </div>
     </div>
 </div>
+
+
+<!-- Modal entrar em sessão existente -->
+<div class="modal fade" id="entrarSessao" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Entrar sessão <i class="bi bi-file-ppt"></i></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Nome</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">ID sessão</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary button-border" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary button-border">Entrar sessão</button>
+        </div>
+      </div>
+    </div>
+  </div>
