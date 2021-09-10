@@ -23,16 +23,16 @@
             <img class="img-background" src="../../assets/background.jpg" alt="Planejamento com planning poker">
         </div>
         <div class="col">
-            <form class="form-detail">
+            <form [formGroup]="formCriaSessao" (ngSubmit)="criarSessao()" class="form-detail">
                 <div class="mb-3">
                   <p class="title-form">Começe a planejar agora!</p>
                   <label class="form-label">Nome</label>
-                  <input type="text" class="form-control input-borda">
+                  <input formControlName="nomeUsuario" type="text" class="form-control input-borda">
                   <div class="form-text">Ex: Ana da Silva.</div>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Nome da sala</label>
-                  <input type="text" class="form-control input-borda">
+                  <input formControlName="nomeSala" type="text" class="form-control input-borda">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Sistema de votação</label>
@@ -56,22 +56,22 @@
           <h5 class="modal-title">Entrar sessão <i class="bi bi-file-ppt"></i></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <form>
+        <form [formGroup]="formEntrarSessao" (ngSubmit)="entrarSessao()"> 
+            <div class="modal-body"> 
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Nome</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <input formControlName="nomeUsuario" type="text" class="form-control" id="recipient-name">
                 </div>
                 <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">ID sessão</label>
-                    <input type="text" class="form-control" id="recipient-name">
+                    <input formControlName="idSala" type="text" class="form-control" id="recipient-name">
                 </div>
-              </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary button-border" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary button-border">Entrar sessão</button>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary button-border" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary button-border">Entrar sessão</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
