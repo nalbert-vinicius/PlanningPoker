@@ -15,12 +15,10 @@ io.on('connection', (socket) =>{
 
     socket.on(socketConst.CRIAR_GAME , (data) =>{
         socket.join(data.idSala)
-        console.log(data);
     })
 
     socket.on(socketConst.ENTRAR_GAME, (data) =>{
       socket.join(data.idSala); 
-      console.log(data) 
     })
 
 
