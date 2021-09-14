@@ -1,0 +1,19 @@
+.container-game{
+    height: 27rem;
+}
+
+.card-poker{
+    width: 5rem;
+    height: 100px;
+    border-radius: 10px;
+    border-color: #5492e082;
+}
+
+.align-item-navbar{
+    margin-left: 700px;
+}
+
+.row>* {
+    padding-left: 0!important;
+    padding-right: 0!important;
+}

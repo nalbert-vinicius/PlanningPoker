@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
+  Cardfibo: any[] = [0,1,2,3,5,8,13,21,34,55,59]
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }
