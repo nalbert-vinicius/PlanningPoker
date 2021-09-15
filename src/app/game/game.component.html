@@ -7,7 +7,7 @@
             <div class="col align-self-center align-item-navbar">
                 <ul class="navbar-nav">
                     <li>
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#entrarSessao" href="">Copia link<i class="bi bi-link-45deg"></i></a>
+                        <a class="nav-link" (click)="copiarLink()" data-bs-toggle="modal" data-bs-target="#entrarSessao" href="">Copia link<i class="bi bi-link-45deg"></i></a>
                     </li>
                 </ul> 
             </div>       
@@ -16,13 +16,30 @@
 </nav>
 
 <div class="container container-game">
-    <div class="row">
-        <div class="card card-poker">
-            aaa
+    <div class="row justify-content-md-center">
+        <div class="col col-md-auto">
+            <div class=" row card card-poker selected-card-margin">
+                <div class="col">
+                    <i class="bi bi-suit-spade"></i>
+                </div>
+                
+                <div class="col" style="text-align: center;">
+                    <p>Teste</p>
+                </div>
+    
+                <div class="col" style="text-align: right;">
+                    <i class="bi bi-suit-spade-fill"></i>
+                </div>            
+            </div>
+            <div class="col">
+                <label class="form-label">Nome da sala</label>
+            </div>
         </div>
+        
     </div>
 </div>
 
+<!--FiboNormal-->
 <div class="container">
     <div class="row">
         <div class="col" *ngFor="let element of Cardfibo">
@@ -40,5 +57,58 @@
                 </div>
             </div>
         </div>
+
+        <div class="col">
+            <div class="row card card-poker">
+                <div class="col">
+                    <i class="bi bi-suit-spade"></i>
+                </div>
+                
+                <div class="col" style="text-align: center;">
+                    <p>?</p>
+                </div>
+                
+                <div class="col" style="text-align: right;">
+                    <i class="bi bi-suit-spade-fill"></i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<!--SmallFibo-->
+<!-- <div class="container">
+    <div class="row">
+        <div class="col" *ngFor="let element of CardSmallFibo">
+            <div class="row card card-poker">
+                <div class="col">
+                    <i class="bi bi-suit-spade"></i>
+                </div>
+                
+                <div class="col" style="text-align: center;">
+                    <p>{{element}}</p>
+                </div>
+                
+                <div class="col" style="text-align: right;">
+                    <i class="bi bi-suit-spade-fill"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row card card-poker">
+                <div class="col">
+                    <i class="bi bi-suit-spade"></i>
+                </div>
+                
+                <div class="col" style="text-align: center;">
+                    <p>?</p>
+                </div>
+                
+                <div class="col" style="text-align: right;">
+                    <i class="bi bi-suit-spade-fill"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

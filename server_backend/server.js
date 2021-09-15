@@ -15,10 +15,12 @@ io.on('connection', (socket) =>{
 
     socket.on(socketConst.CRIAR_GAME , (data) =>{
         socket.join(data.idSala)
+        socket.emit(socketConst.ENTRAR_GAME, data)
     })
 
     socket.on(socketConst.ENTRAR_GAME, (data) =>{
-      socket.join(data.idSala); 
+      socket.join(data.idSala);
+      socket.emit(socketConst.ENTRAR_GAME, data)
     })
 
 

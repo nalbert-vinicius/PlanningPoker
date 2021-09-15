@@ -7,7 +7,7 @@
             <div class="col align-self-center align-item-navbar">
                 <ul class="navbar-nav">
                     <li>
-                        <a class="nav-link" href=""><i class="bi bi-joystick"> CRIAR SESSÃO</i></a>
+                        <a class="nav-link" href="#plan"><i class="bi bi-joystick"> CRIAR SESSÃO</i></a>
                     </li>
                     <li>
                         <a class="nav-link" data-bs-toggle="modal" data-bs-target="#entrarSessao" href=""><i class="bi bi-box-arrow-in-right"> ENTRAR SESSÃO</i></a>
@@ -17,6 +17,7 @@
         </div>
     </div>
 </nav>
+<!-- Página -->
 <div class="container ma-top">
     <div class="row">
         <div class="col">
@@ -27,8 +28,7 @@
                 <div class="mb-3">
                   <p class="title-form">Começe a planejar agora!</p>
                   <label class="form-label">Nome</label>
-                  <input formControlName="nomeUsuario" type="text" class="form-control input-borda">
-                  <div class="form-text">Ex: Ana da Silva.</div>
+                  <input id="plan" formControlName="nomeUsuario" type="text" class="form-control input-borda">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Nome da sala</label>
@@ -36,12 +36,18 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Sistema de votação</label>
-                    <select class="form-select input-borda">
+                    <select class="form-select input-borda" formControlName="tipoCarta">
                         <option value="1">Fibonacci</option>
                         <option value="2">Fibonacci curto</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary  button-border">Criar</button>
+                <div class="mb-3">
+                    <div class="form-check form-switch">
+                        <input  formControlName="espectador" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Espectador?</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary  button-border">Planejar agora!</button>
             </form>
         </div>
     </div>
@@ -66,10 +72,16 @@
                     <label for="recipient-name" class="col-form-label">ID sessão</label>
                     <input formControlName="idSala" type="text" class="form-control" id="recipient-name">
                 </div>
+                <div class="mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Espectador?</label>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-secondary button-border" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary button-border">Entrar sessão</button>
+                <button type="submit" class="btn btn-primary button-border" data-bs-dismiss="modal">Entrar sessão</button>
             </div>
         </form>
       </div>

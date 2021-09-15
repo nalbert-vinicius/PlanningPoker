@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit {
 
   formCriaSessao: FormGroup = this.formBuilder.group({
     nomeUsuario: [''],
-    nomeSala: ['']
+    nomeSala: [''],
+    tipoCarta: [''],
+    espectador: ['']
   })
 
   formEntrarSessao: FormGroup = this.formBuilder.group({
@@ -33,8 +35,11 @@ export class HomeComponent implements OnInit {
     var sala = {
       nomeUsuario: this.formCriaSessao.value.nomeUsuario,
       nomeSala: this.formCriaSessao.value.nomeSala,
+      tipoCarta: this.formCriaSessao.value.tipoCarta,
+      espectador: this.formCriaSessao.value.espectador,
       idSala: this.uuid()
     }
+    console.log(sala)
     this.socketIoService.criarSessao(sala)
   }
 

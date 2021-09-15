@@ -3,7 +3,7 @@
 }
 
 .ma-top{
-    margin-top: 90px!important;
+    margin-top: 60px!important;
 }
 
 .input-borda{
@@ -27,5 +27,9 @@
 
 .button-border{
     border-radius: 20px;
+}
+
+.modal-footer {
+    border-top: none!important;
 }
 
