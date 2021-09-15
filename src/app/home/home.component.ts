@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
       espectador: this.formCriaSessao.value.espectador,
       idSala: this.uuid()
     }
-    console.log(sala)
     this.socketIoService.criarSessao(sala)
   }
 

@@ -17,14 +17,14 @@
 
 <div class="container container-game">
     <div class="row justify-content-md-center">
-        <div class="col col-md-auto">
+        <div *ngFor="let element of players" class="col col-md-auto">
             <div class=" row card card-poker selected-card-margin">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>
                 </div>
                 
                 <div class="col" style="text-align: center;">
-                    <p>Teste</p>
+                    <p>{{element.nomeUsuario}}</p>
                 </div>
     
                 <div class="col" style="text-align: right;">

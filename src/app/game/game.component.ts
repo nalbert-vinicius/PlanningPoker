@@ -16,6 +16,8 @@ export class GameComponent implements OnInit {
   text = "";
   nomeUsuario: any;
 
+  players: any[] = [];
+
 
 
   constructor(
@@ -26,9 +28,12 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.Route.params.subscribe((data: any) =>{
-      console.log(data.id);
       this.text = "http://localhost:4200/room/"+data.id;
     })
+
+    this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
+      this.players.push(data)
+    });
   }
   
 
