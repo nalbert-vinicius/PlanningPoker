@@ -18,13 +18,13 @@
 <div class="container container-game">
     <div class="row justify-content-md-center">
         <div *ngFor="let element of players" class="col col-md-auto">
-            <div class=" row card card-poker selected-card-margin">
+            <div class=" row card card-poker selected-card-margin" (click)="teste()">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>
                 </div>
                 
                 <div class="col" style="text-align: center;">
-                    <p>{{element.nomeUsuario}}</p>
+                    <p>aaa</p>
                 </div>
     
                 <div class="col" style="text-align: right;">
@@ -32,7 +32,7 @@
                 </div>            
             </div>
             <div class="col">
-                <label class="form-label">Nome da sala</label>
+                <label class="form-label">{{element.nomeUsuario}}</label>
             </div>
         </div>
         

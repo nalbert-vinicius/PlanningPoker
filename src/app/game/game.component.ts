@@ -32,6 +32,7 @@ export class GameComponent implements OnInit {
     })
 
     this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
+      console.log("data",data)
       this.players.push(data)
     });
   }
@@ -40,6 +41,5 @@ export class GameComponent implements OnInit {
   copiarLink() {
     this.clipboardService.copyFromContent(this.text)
   }
-
 
 }
