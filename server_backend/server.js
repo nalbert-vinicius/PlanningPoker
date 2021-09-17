@@ -16,18 +16,17 @@ const io = require('socket.io')(http, {cors: {origin: '*'}});
 
 io.on('connection', (socket) =>{
 
-    socket.on(socketConst.CRIAR_GAME , (data) =>{
+    socket.on(socketConst.CRIAR_GAME, (data) =>{
         var gameStatus = gameService.criarJogo(data)
-        console.log(gameStatus)
         socket.join(data.idSala);
-        socket.emit(socketConst.ENTRAR_GAME, gameStatus)
+        io.to(data.idSala).emit(socketConst.ENTRAR_GAME, gameStatus)
     })
 
     socket.on(socketConst.ENTRAR_GAME, (data) =>{
       var gameStatus = gameService.verificaGame(data)
       socket.join(data.idSala);
-      console.log(gameStatus)
-      socket.emit(socketConst.ENTRAR_GAME, {gameStatus})
+      //emite para a sala do id especifico
+      io.to(data.idSala).emit(socketConst.ENTRAR_GAME, gameStatus)
     })
 
 

@@ -19,7 +19,6 @@ export class SocketIoService {
         private route: Router,
     ){
         this.socket.on(socketConst.ENTRAR_GAME, (data: any) =>{
-            console.log("DATA SOCKET", data)
             this.subData.next(data);
         })
     }
