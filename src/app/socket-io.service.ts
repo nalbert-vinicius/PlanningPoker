@@ -37,6 +37,12 @@ export class SocketIoService {
         })
     }
 
+    async votar(data: any){
+        return await new Promise((resolve, reject) =>{
+            this.socket.emit(socketConst.VOTAR_GAME, data)
+        })
+    }
+
     GetDadosPlayer(){
         return this.subData.asObservable();  
     }

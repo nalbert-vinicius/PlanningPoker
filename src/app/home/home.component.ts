@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocketIoService } from '../socket-io.service';
 
@@ -17,15 +17,16 @@ export class HomeComponent implements OnInit {
   ) { }
 
   formCriaSessao: FormGroup = this.formBuilder.group({
-    nomeUsuario: [''],
-    nomeSala: [''],
-    tipoCarta: [''],
-    espectador: ['']
+    nomeUsuario: [null, Validators.required],
+    nomeSala: [null, Validators.required],
+    tipoCarta: [null, Validators.required],
+    espectador: [false]
   })
 
   formEntrarSessao: FormGroup = this.formBuilder.group({
-    nomeUsuario: [''],
-    idSala: ['']
+    nomeUsuario: ['', Validators.required],
+    idSala: ['', Validators.required],
+    espectador: [false]
   }) 
 
   ngOnInit() {

@@ -44,6 +44,10 @@ export class GameComponent implements OnInit {
       });
     });
   }
+
+  votar(data: any){
+    this.socketIoService.votar(data);
+  }
   
 
   copiarLink() {

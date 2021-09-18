@@ -31,7 +31,7 @@
                     <i class="bi bi-suit-spade-fill"></i>
                 </div>            
             </div>
-            <div class="col">
+            <div class="col" style="text-align: center;">
                 <label class="form-label">{{element}}</label>
             </div>
         </div>
@@ -42,7 +42,7 @@
 <!--FiboNormal-->
 <div class="container">
     <div class="row">
-        <div class="col" *ngFor="let element of Cardfibo">
+        <div class="col" *ngFor="let element of Cardfibo" (click)="votar(element)">
             <div class="row card card-poker">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>
