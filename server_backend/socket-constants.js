@@ -1,4 +1,5 @@
 module.exports = {
     CRIAR_GAME: 'criarGame',
-    ENTRAR_GAME: 'entrarGame'
+    ENTRAR_GAME: 'entrarGame',
+    VOTAR_GAME: 'votarGame'
 }
