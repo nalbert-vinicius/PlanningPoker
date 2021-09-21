@@ -21,6 +21,10 @@ export class SocketIoService {
         this.socket.on(socketConst.ENTRAR_GAME, (data: any) =>{
             this.subData.next(data);
         })
+
+        this.socket.on(socketConst.VOTAR_GAME, (data: any) =>{
+            this.subData.next(data);
+        })
     }
 
     async criarSessao(data: any){
