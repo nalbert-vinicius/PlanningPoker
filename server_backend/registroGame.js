@@ -14,7 +14,7 @@ const criarJogo = (data) =>{
     return  games;
 }
 
-const verificaGame = (data) =>{
+const inserirPlayer = (data) =>{
     for (let i = 0; i < games.length; i++) {
         if(games[i].idSala == data.idSala){
             games[i].players.push(data.nomeUsuario)
@@ -34,6 +34,6 @@ const inserirVotacao = (data) =>{
 
 module.exports = {
     criarJogo,
-    verificaGame,
+    inserirPlayer,
     inserirVotacao
 }

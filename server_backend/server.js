@@ -23,7 +23,7 @@ io.on('connection', (socket) =>{
     })
 
     socket.on(socketConst.ENTRAR_GAME, (data) =>{
-      var gameStatus = gameService.verificaGame(data)
+      var gameStatus = gameService.inserirPlayer(data)
       socket.join(data.idSala);
       //emite para a sala do id especifico
       io.to(data.idSala).emit(socketConst.ENTRAR_GAME, gameStatus)
