@@ -14,6 +14,7 @@ export class SocketIoService {
     private socket = socketIO(this.url);
 
     private subData: Subject<any> = new Subject<any>();
+    private SubVote: Subject<any> = new Subject<any>();
 
     constructor(
         private route: Router,
@@ -23,7 +24,7 @@ export class SocketIoService {
         })
 
         this.socket.on(socketConst.VOTAR_GAME, (data: any) =>{
-            this.subData.next(data);
+            this.SubVote.next(data);
         })
     }
 
@@ -45,6 +46,10 @@ export class SocketIoService {
         return await new Promise((resolve, reject) =>{
             this.socket.emit(socketConst.VOTAR_GAME, data)
         })
+    }
+
+    GetVote(){
+        return this.SubVote.asObservable();
     }
 
     GetDadosPlayer(){

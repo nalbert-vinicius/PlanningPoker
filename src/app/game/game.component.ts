@@ -13,11 +13,11 @@ export class GameComponent implements OnInit {
 
   Cardfibo: any[] = [0,1,2,3,5,8,13,21,34,55,59];
   CardSmallFibo: any[] = [0,1,1,2,3,5,8,13,20,40,100];
-  text = "";
+  linkClipboard = "";
   idSala: any;
-  nomeUsuario: any;
-
   players: any[] = [];
+  visible: false;
+  vote: boolean = false;
 
 
 
@@ -30,7 +30,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.Route.params.subscribe((data: any) =>{
       this.idSala = data.id
-      this.text = "http://localhost:4200/room/"+data.id;
+      this.linkClipboard = "http://localhost:4200/room/"+data.id;
     })
 
     this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
@@ -43,15 +43,23 @@ export class GameComponent implements OnInit {
         }
       });
     });
+
+    this.socketIoService.GetVote().subscribe((data: any) =>{
+
+    })
   }
 
-  votar(data: any){
+  votar(card: any){
+    var data = {
+      voto: card,
+      idSala: this.idSala
+    }
     this.socketIoService.votar(data);
   }
   
 
   copiarLink() {
-    this.clipboardService.copyFromContent(this.text)
+    this.clipboardService.copyFromContent(this.linkClipboard)
   }
 
 }

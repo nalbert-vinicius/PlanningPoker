@@ -15,7 +15,7 @@
     </div>
 </nav>
 
-<div class="container container-game">
+<div *ngIf="visible" class="container container-game">
     <div class="row justify-content-md-center">
         <div *ngFor="let element of players" class="col col-md-auto">
             <div class=" row card card-poker selected-card-margin" (click)="teste()">
@@ -35,9 +35,24 @@
                 <label class="form-label">{{element}}</label>
             </div>
         </div>
-        
     </div>
 </div>
+
+<!-- Ao entrar na sala -->
+<div *ngIf="!visible">
+    <div class="container container-game">
+        <div class="row justify-content-md-center">
+            <div *ngFor="let element of players" class="col col-md-auto">
+                <div class=" row card card-empty selected-card-margin"></div>
+                <div class="col" style="text-align: center;">
+                    <label class="form-label">{{element}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- quando vota -->
 
 <!--FiboNormal-->
 <div class="container">
