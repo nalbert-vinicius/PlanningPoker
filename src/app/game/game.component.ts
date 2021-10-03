@@ -52,7 +52,8 @@ export class GameComponent implements OnInit {
   votar(card: any){
     var data = {
       voto: card,
-      idSala: this.idSala
+      idSala: this.idSala,
+      player: localStorage.getItem('userName')
     }
     this.socketIoService.votar(data);
   }

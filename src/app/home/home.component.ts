@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   criarSessao(){
+    localStorage.setItem('userName', this.formCriaSessao.value.nomeUsuario)
     var sala = {
       nomeUsuario: this.formCriaSessao.value.nomeUsuario,
       nomeSala: this.formCriaSessao.value.nomeSala,

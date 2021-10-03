@@ -23,10 +23,11 @@ const inserirPlayer = (data) =>{
     }
 }
 
-const inserirVotacao = (data) =>{
+const inserirVoto = (data) =>{
     for (let i = 0; i < games.length; i++) {
         if(games[i].idSala == data.idSala){
-            games[i].votacao.push([data.voto, data.nomeUsuario])
+            games[i].votacao.push([data.voto, data.player])
+            return games[i];
         }
     }
 }
@@ -35,5 +36,5 @@ const inserirVotacao = (data) =>{
 module.exports = {
     criarJogo,
     inserirPlayer,
-    inserirVotacao
+    inserirVoto
 }
