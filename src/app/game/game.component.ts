@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { ActivatedRoute } from '@angular/router';
 import { SocketIoService } from '../socket-io.service';
@@ -9,7 +9,7 @@ import { SocketIoService } from '../socket-io.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   Cardfibo: any[] = [0,1,2,3,5,8,13,21,34,55,59];
   CardSmallFibo: any[] = [0,1,1,2,3,5,8,13,20,40,100];
@@ -34,14 +34,12 @@ export class GameComponent implements OnInit {
     })
 
     this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
-      data.forEach(element => {
-        if(element.idSala = this.idSala){
-          this.players = [];
-          element.players.forEach(element => {
-            this.players.push(element)
-          });
-        }
-      });
+      if(data.idSala = this.idSala){
+        this.players = [];
+        data.players.forEach(element => {
+          this.players.push(element)
+        });
+      }
     });
 
     this.socketIoService.GetVote().subscribe((data: any) =>{
@@ -61,6 +59,11 @@ export class GameComponent implements OnInit {
 
   copiarLink() {
     this.clipboardService.copyFromContent(this.linkClipboard)
+  }
+
+  ngOnDestroy(): void {
+    localStorage.clear();
+    console.log("Componente destruido")
   }
 
 }

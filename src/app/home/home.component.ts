@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   }) 
 
   ngOnInit() {
+    localStorage.clear();
   }
 
   criarSessao(){
@@ -45,6 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   entrarSessao(){
+    localStorage.setItem('userName', this.formEntrarSessao.value.nomeUsuario)
     var sessao = {
       nomeUsuario: this.formEntrarSessao.value.nomeUsuario,
       idSala: this.formEntrarSessao.value.idSala,
