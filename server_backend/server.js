@@ -34,6 +34,10 @@ io.on('connection', (socket) =>{
         io.to(data.idSala).emit(socketConst.VOTAR_GAME, gameStatus);
     })
 
+    socket.on(socketConst.VIRAR_CARD, (data) =>{
+        io.to(data.idSala).emit(socketConst.VIRAR_CARD, data.virar);
+    })
+
 
 
     socket.on('disconnect', () =>{

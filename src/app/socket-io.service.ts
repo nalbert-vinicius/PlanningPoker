@@ -15,6 +15,7 @@ export class SocketIoService {
 
     private subData: Subject<any> = new Subject<any>();
     private SubVote: Subject<any> = new Subject<any>();
+    private SubVirar: Subject<any> = new Subject<any>();
 
     constructor(
         private route: Router,
@@ -25,6 +26,10 @@ export class SocketIoService {
 
         this.socket.on(socketConst.VOTAR_GAME, (data: any) =>{
             this.SubVote.next(data);
+        });
+
+        this.socket.on(socketConst.VIRAR_CARD, (data: any) =>{
+            this.SubVirar.next(data);
         })
     }
 
@@ -48,11 +53,21 @@ export class SocketIoService {
         })
     }
 
+    async virar(data: any){
+        return await new Promise((resolve, reject) =>{
+            this.socket.emit(socketConst.VIRAR_CARD, data)
+        })
+    }
+
     GetVote(){
         return this.SubVote.asObservable();
     }
 
     GetDadosPlayer(){
         return this.subData.asObservable();  
+    }
+
+    GetStatus(){
+        return this.SubVirar.asObservable();
     }
 }

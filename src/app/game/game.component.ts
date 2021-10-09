@@ -16,9 +16,10 @@ export class GameComponent implements OnInit, OnDestroy {
   linkClipboard = "";
   idSala: any;
   players: any[] = [];
-  visible: false;
+  votacao: any[] = [];
+  visible: boolean = true;
   vote: boolean = false;
-
+  virado: any;
 
 
   constructor(
@@ -43,17 +44,29 @@ export class GameComponent implements OnInit, OnDestroy {
     });
 
     this.socketIoService.GetVote().subscribe((data: any) =>{
+      this.votacao = data.votacao;
+    })
 
+    this.socketIoService.GetStatus().subscribe((virar: any) =>{
+      this.visible = false;
+      this.virado = true;
+      console.log(this.votacao)
     })
   }
 
   votar(card: any){
+    this.visible = false;
+    this.virado = true;
     var data = {
       voto: card,
       idSala: this.idSala,
       player: localStorage.getItem('userName')
     }
     this.socketIoService.votar(data);
+  }
+
+  virarCartas(){
+    this.socketIoService.virar({idSala: this.idSala, virar: true});
   }
   
 

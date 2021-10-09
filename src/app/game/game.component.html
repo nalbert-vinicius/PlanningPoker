@@ -15,31 +15,8 @@
     </div>
 </nav>
 
-<div *ngIf="visible" class="container container-game">
-    <div class="row justify-content-md-center">
-        <div *ngFor="let element of players" class="col col-md-auto">
-            <div class=" row card card-poker selected-card-margin" (click)="teste()">
-                <div class="col">
-                    <i class="bi bi-suit-spade"></i>
-                </div>
-                
-                <div class="col" style="text-align: center;">
-                    <p>definir</p>
-                </div>
-    
-                <div class="col" style="text-align: right;">
-                    <i class="bi bi-suit-spade-fill"></i>
-                </div>            
-            </div>
-            <div class="col" style="text-align: center;">
-                <label class="form-label">{{element}}</label>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Ao entrar na sala -->
-<div *ngIf="!visible">
+<div *ngIf="visible">
     <div class="container container-game">
         <div class="row justify-content-md-center">
             <div *ngFor="let element of players" class="col col-md-auto">
@@ -53,6 +30,78 @@
 </div>
 
 <!-- quando vota -->
+<div *ngIf="virado">
+    <div class="container container-game">
+        <div class="row justify-content-md-center">
+            <div *ngFor="let element of players" class="col col-md-auto">
+                <div class=" row card card-empty selected-card-margin">
+                    <img src="../../assets/card.png" alt="Carta virada">
+                </div>
+                <div class="col" style="text-align: center;">
+                    <label class="form-label">{{element}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse align-bottom-bar">
+                <ul class="navbar-nav">
+                  <li class="nav-item padding-item">
+                    <button type="button" class="btn btn-outline-primary" (click)="virarCartas()">Virar cartas</button>
+                  </li>
+                  <li class="nav-item padding-item">
+                    <button type="button" class="btn btn-outline-primary">Reiniciar game</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </div>
+</div>
+
+<!-- Ao virar as cartas -->
+<div *ngIf="!virado && virado !=undefined" class="container container-game">
+    <div class="row justify-content-md-center">
+        <div *ngFor="let element of votacao" class="col col-md-auto">
+            <div class=" row card card-poker selected-card-margin" (click)="teste()">
+                <div class="col">
+                    <i class="bi bi-suit-spade"></i>
+                </div>
+                
+                <div class="col" style="text-align: center;">
+                    {{element.carta}}
+                </div>
+    
+                <div class="col" style="text-align: right;">
+                    <i class="bi bi-suit-spade-fill"></i>
+                </div>            
+            </div>
+            <div class="col" style="text-align: center;">
+                <label class="form-label">{{element.player}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse align-bottom-bar">
+                <ul class="navbar-nav">
+                  <li class="nav-item padding-item">
+                    <button type="button" class="btn btn-outline-primary">Virar cartas</button>
+                  </li>
+                  <li class="nav-item padding-item">
+                    <button type="button" class="btn btn-outline-primary">Reiniciar game</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </div>
+</div>
+
 
 <!--FiboNormal-->
 <div class="container">

@@ -1,6 +1,6 @@
 .container-game{
     height: 16rem;
-    margin-top: 10rem;
+    margin-top: 7rem;
 }
 
 .card-poker{
@@ -17,6 +17,7 @@
     border-style: dashed;
     border-color: #5492e082;
     background-color: #0000000d;
+    border: none;
 }
 
 .card-vote{
@@ -39,4 +40,12 @@
 
 .selected-card-margin{
     margin: 5px;
+}
+
+.align-bottom-bar{
+    margin: 0% 0% 0% 37%;
+}
+
+.padding-item{
+    padding: 5px;
 }
