@@ -30,8 +30,8 @@
 </div>
 
 <!-- quando vota -->
-<div *ngIf="virado">
-    <div class="container container-game">
+<div *ngIf="!visible">
+    <div *ngIf="virado" class="container container-game">
         <div class="row justify-content-md-center">
             <div *ngFor="let element of players" class="col col-md-auto">
                 <div class=" row card card-empty selected-card-margin">
@@ -43,27 +43,8 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-              <div class="collapse navbar-collapse align-bottom-bar">
-                <ul class="navbar-nav">
-                  <li class="nav-item padding-item">
-                    <button type="button" class="btn btn-outline-primary" (click)="virarCartas()">Virar cartas</button>
-                  </li>
-                  <li class="nav-item padding-item">
-                    <button type="button" class="btn btn-outline-primary">Reiniciar game</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </div>
-</div>
 
-<!-- Ao virar as cartas -->
-<div *ngIf="!virado && virado !=undefined" class="container container-game">
-    <div class="row justify-content-md-center">
+    <div *ngIf="!virado" class="row justify-content-md-center">
         <div *ngFor="let element of votacao" class="col col-md-auto">
             <div class=" row card card-poker selected-card-margin" (click)="teste()">
                 <div class="col">
@@ -84,13 +65,14 @@
         </div>
     </div>
 
+
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
               <div class="collapse navbar-collapse align-bottom-bar">
                 <ul class="navbar-nav">
                   <li class="nav-item padding-item">
-                    <button type="button" class="btn btn-outline-primary">Virar cartas</button>
+                    <button type="button" class="btn btn-outline-primary" (click)="virarCartas()">Virar cartas</button>
                   </li>
                   <li class="nav-item padding-item">
                     <button type="button" class="btn btn-outline-primary">Reiniciar game</button>
@@ -101,7 +83,6 @@
           </nav>
     </div>
 </div>
-
 
 <!--FiboNormal-->
 <div class="container">

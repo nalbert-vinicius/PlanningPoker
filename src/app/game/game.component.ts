@@ -18,8 +18,7 @@ export class GameComponent implements OnInit, OnDestroy {
   players: any[] = [];
   votacao: any[] = [];
   visible: boolean = true;
-  vote: boolean = false;
-  virado: any;
+  virado: boolean = true;
 
 
   constructor(
@@ -48,9 +47,7 @@ export class GameComponent implements OnInit, OnDestroy {
     })
 
     this.socketIoService.GetStatus().subscribe((virar: any) =>{
-      this.visible = false;
-      this.virado = true;
-      console.log(this.votacao)
+      this.virado = virar;
     })
   }
 
@@ -66,7 +63,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   virarCartas(){
-    this.socketIoService.virar({idSala: this.idSala, virar: true});
+    this.socketIoService.virar({idSala: this.idSala, virar: false});
   }
   
 
