@@ -7,8 +7,7 @@ const criarJogo = (data) =>{
         idSala: data.idSala,
         tipoCarta: data.tipoCarta,
         espectador: data.espectador,
-        players: [data.nomeUsuario],
-        votacao: []
+        players: [{player: data.nomeUsuario, carta: 0, status: ''}],
     }
     games.push(gameStatus);
     return  gameStatus;
@@ -17,7 +16,7 @@ const criarJogo = (data) =>{
 const inserirPlayer = (data) =>{
     for (let i = 0; i < games.length; i++) {
         if(games[i].idSala == data.idSala){
-            games[i].players.push(data.nomeUsuario)
+            games[i].players.push({player: data.nomeUsuario, carta: 0, status: ''})
             return  games[i];
         }
     }
@@ -26,22 +25,16 @@ const inserirPlayer = (data) =>{
 const inserirVoto = (data) =>{
     for (let i = 0; i < games.length; i++) {
         if(games[i].idSala == data.idSala){
-            if(games[i].votacao.length == 0){
-                //Insere primeiro voto
-                games[i].votacao.push({carta: data.voto, player: data.player})
-                return games[i];
-            }else{
-                for (let k = 0; k < games[i].votacao.length; k++) {
-                    // Verifica se o player já votou
-                    if(games[i].votacao[k].player == data.player){
-                        games[i].votacao[k].carta = data.voto
-                        return games[i];
-                    }
+            for (let k = 0; k < games[i].players.length; k++) {
+                if(games[i].players[k].player == data.player){
+                    games[i].players[k].carta = data.voto;
+                    games[i].players[k].status = 'voting';
+                    return games[i];
                 }
-                // Insere primeiro voto de outros players
-                games[i].votacao.push({carta: data.voto, player: data.player})
-                return games[i];               
             }
+            // Insere primeiro voto de outros players
+            games[i].players.push({player: data.player, carta: data.voto,  status: 'voting'})
+            return games[i];  
         }
     }
 }

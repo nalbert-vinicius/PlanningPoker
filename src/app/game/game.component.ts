@@ -16,7 +16,6 @@ export class GameComponent implements OnInit, OnDestroy {
   linkClipboard = "";
   idSala: any;
   players: any[] = [];
-  votacao: any[] = [];
   visible: boolean = true;
   virado: boolean = true;
 
@@ -43,7 +42,8 @@ export class GameComponent implements OnInit, OnDestroy {
     });
 
     this.socketIoService.GetVote().subscribe((data: any) =>{
-      this.votacao = data.votacao;
+      this.players = [];
+      this.players = data.players;
     })
 
     this.socketIoService.GetStatus().subscribe((virar: any) =>{
