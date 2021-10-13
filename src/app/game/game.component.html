@@ -15,7 +15,6 @@
     </div>
 </nav>
 
-<!-- Ao entrar na sala -->
 <div class="container container-game">
     <div class="row justify-content-md-center">
         <div *ngFor="let element of players" class="col col-md-auto">
@@ -78,7 +77,7 @@
 
 
 <!--FiboNormal-->
-<div class="container">
+<div *ngIf="tipo == 1" class="container">
     <div class="row">
         <div class="col" *ngFor="let element of Cardfibo" (click)="votar(element)">
             <div class="row card card-poker">
@@ -95,33 +94,16 @@
                 </div>
             </div>
         </div>
-
-        <div class="col">
-            <div class="row card card-poker">
-                <div class="col">
-                    <i class="bi bi-suit-spade"></i>
-                </div>
-                
-                <div class="col" style="text-align: center;">
-                    <p>?</p>
-                </div>
-                
-                <div class="col" style="text-align: right;">
-                    <i class="bi bi-suit-spade-fill"></i>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
-<!--SmallFibo-->
-<!-- <div class="container">
+<div *ngIf="tipo == 2" class="container">
     <div class="row">
         <div class="col" *ngFor="let element of CardSmallFibo">
             <div class="row card card-poker">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>
-                </div>fibo
+                </div>
                 
                 <div class="col" style="text-align: center;">
                     <p>{{element}}</p>
@@ -132,21 +114,5 @@
                 </div>
             </div>
         </div>
-
-        <div class="col">
-            <div class="row card card-poker">
-                <div class="col">
-                    <i class="bi bi-suit-spade"></i>
-                </div>
-                
-                <div class="col" style="text-align: center;">
-                    <p>?</p>
-                </div>
-                
-                <div class="col" style="text-align: right;">
-                    <i class="bi bi-suit-spade-fill"></i>
-                </div>
-            </div>
-        </div>
     </div>
-</div> -->
+</div>

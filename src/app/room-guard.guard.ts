@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouteConfigLoadEnd} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomGuardGuard implements CanActivate {
-  
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    throw new Error('Method not implemented.');
+
+  constructor(
+    private route: Router
+  ){}
+
+  canActivate(url: ActivatedRouteSnapshot): boolean {
+    if(localStorage.getItem('userName') == undefined){
+      this.route.navigate([''])
+      return false;
+    }else{
+      return true;
+    }
   }
+
 }

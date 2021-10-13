@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameComponent } from './game/game.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { EnterGameUrlComponent } from './enter-game-url/enter-game-url.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GameComponent
+    GameComponent,
+    EnterGameUrlComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,15 +11,15 @@ import { SocketIoService } from '../socket-io.service';
 })
 export class GameComponent implements OnInit, OnDestroy {
 
-  Cardfibo: any[] = [0,1,2,3,5,8,13,21,34,55,59];
-  CardSmallFibo: any[] = [0,1,1,2,3,5,8,13,20,40,100];
+  Cardfibo: any[] = [0,1,2,3,5,8,13,21,34,55,59, '?'];
+  CardSmallFibo: any[] = [0,1,1,2,3,5,8,13,20,40,100, '?'];
   linkClipboard = "";
   idSala: any;
   players: any[] = [];
   visible: boolean = true;
   virado: boolean = true;
   admin: string;
-
+  tipo: any;
 
   constructor(
     private clipboardService: ClipboardService,
@@ -28,19 +28,20 @@ export class GameComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.admin = localStorage.getItem('admin');
-    this.Route.params.subscribe((data: any) =>{
-      this.idSala = data.id
-      this.linkClipboard = "http://localhost:4200/room/"+data.id;
-    })
+    if(localStorage.getItem('userName') !=undefined){
+      this.admin = localStorage.getItem('admin');
+      this.Route.params.subscribe((data: any) =>{
+        this.idSala = data.id
+        this.linkClipboard = "http://localhost:4200/room/"+data.id;
+      })
 
     this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
       if(data.idSala = this.idSala){
+        this.tipo = data.tipoCarta;
         this.players = [];
         data.players.forEach(element => {
           this.players.push(element)
         });
-        console.log("data",data)
       }
     });
 
@@ -52,7 +53,11 @@ export class GameComponent implements OnInit, OnDestroy {
     this.socketIoService.GetStatus().subscribe((virar: any) =>{
       this.virado = virar;
     })
+  }else{
+    console.log("entrooou")
   }
+  }
+    
 
   votar(card: any){
     this.visible = false;
