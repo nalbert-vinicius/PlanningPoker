@@ -16,24 +16,17 @@
 </nav>
 
 <!-- Ao entrar na sala -->
-<div *ngIf="visible">
-    <div class="container container-game">
-        <div class="row justify-content-md-center">
-            <div *ngFor="let element of players" class="col col-md-auto">
+<div class="container container-game">
+    <div class="row justify-content-md-center">
+        <div *ngFor="let element of players" class="col col-md-auto">
+            <div *ngIf="element.status == ''" class="col">
                 <div class=" row card card-empty selected-card-margin"></div>
                 <div class="col" style="text-align: center;">
                     <label class="form-label">{{element.player}}</label>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- quando vota -->
-<div *ngIf="!visible">
-    <div *ngIf="virado" class="container container-game">
-        <div class="row justify-content-md-center">
-            <div *ngFor="let element of players" class="col col-md-auto">
+            <div *ngIf="element.status !='' && virado" class="col">
                 <div class=" row card card-empty selected-card-margin">
                     <img src="../../assets/card.png" alt="Carta virada">
                 </div>
@@ -41,32 +34,31 @@
                     <label class="form-label">{{element.player}}</label>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div *ngIf="!virado" class="row justify-content-md-center">
-        <div *ngFor="let element of players" class="col col-md-auto">
-            <div class=" row card card-poker selected-card-margin" (click)="teste()">
-                <div class="col">
-                    <i class="bi bi-suit-spade"></i>
+            <div *ngIf="element.status !='' && !virado"class="col">
+                <div class=" row card card-poker selected-card-margin">
+                    <div class="col">
+                        <i class="bi bi-suit-spade"></i>
+                    </div>
+                    
+                    <div class="col" style="text-align: center;">
+                        {{element.carta}}
+                    </div>
+        
+                    <div class="col" style="text-align: right;">
+                        <i class="bi bi-suit-spade-fill"></i>
+                    </div>            
                 </div>
-                
                 <div class="col" style="text-align: center;">
-                    {{element.carta}}
+                    <label class="form-label">{{element.player}}</label>
                 </div>
-    
-                <div class="col" style="text-align: right;">
-                    <i class="bi bi-suit-spade-fill"></i>
-                </div>            
             </div>
-            <div class="col" style="text-align: center;">
-                <label class="form-label">{{element.player}}</label>
-            </div>
+            
+
         </div>
     </div>
 
-
-    <div class="container">
+    <div class="container" *ngIf="!visible && admin=='true'">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
               <div class="collapse navbar-collapse align-bottom-bar">
@@ -83,6 +75,7 @@
           </nav>
     </div>
 </div>
+
 
 <!--FiboNormal-->
 <div class="container">
@@ -128,7 +121,7 @@
             <div class="row card card-poker">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>
-                </div>
+                </div>fibo
                 
                 <div class="col" style="text-align: center;">
                     <p>{{element}}</p>

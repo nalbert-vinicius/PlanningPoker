@@ -18,6 +18,7 @@ export class GameComponent implements OnInit, OnDestroy {
   players: any[] = [];
   visible: boolean = true;
   virado: boolean = true;
+  admin: string;
 
 
   constructor(
@@ -27,6 +28,7 @@ export class GameComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.admin = localStorage.getItem('admin');
     this.Route.params.subscribe((data: any) =>{
       this.idSala = data.id
       this.linkClipboard = "http://localhost:4200/room/"+data.id;
@@ -38,6 +40,7 @@ export class GameComponent implements OnInit, OnDestroy {
         data.players.forEach(element => {
           this.players.push(element)
         });
+        console.log("data",data)
       }
     });
 

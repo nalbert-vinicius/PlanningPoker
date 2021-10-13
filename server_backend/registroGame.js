@@ -32,7 +32,6 @@ const inserirVoto = (data) =>{
                     return games[i];
                 }
             }
-            // Insere primeiro voto de outros players
             games[i].players.push({player: data.player, carta: data.voto,  status: 'voting'})
             return games[i];  
         }
