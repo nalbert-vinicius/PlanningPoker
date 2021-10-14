@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SocketIoService } from '../socket-io.service';
 
 
@@ -24,38 +24,39 @@ export class GameComponent implements OnInit, OnDestroy {
   constructor(
     private clipboardService: ClipboardService,
     private Route: ActivatedRoute,
+    private router: Router,
     private socketIoService: SocketIoService
   ) { }
 
   ngOnInit(): void {
+    this.Route.params.subscribe((data: any) =>{
+      this.idSala = data.id
+      this.linkClipboard = "http://localhost:4200/"+data.id;
+    })
+
     if(localStorage.getItem('userName') !=undefined){
       this.admin = localStorage.getItem('admin');
-      this.Route.params.subscribe((data: any) =>{
-        this.idSala = data.id
-        this.linkClipboard = "http://localhost:4200/room/"+data.id;
+      this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
+        if(data.idSala = this.idSala){
+          this.tipo = data.tipoCarta;
+          this.players = [];
+          data.players.forEach(element => {
+            this.players.push(element)
+          });
+        }
+      });
+
+      this.socketIoService.GetVote().subscribe((data: any) =>{
+        this.players = [];
+        this.players = data.players;
       })
 
-    this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
-      if(data.idSala = this.idSala){
-        this.tipo = data.tipoCarta;
-        this.players = [];
-        data.players.forEach(element => {
-          this.players.push(element)
-        });
-      }
-    });
-
-    this.socketIoService.GetVote().subscribe((data: any) =>{
-      this.players = [];
-      this.players = data.players;
-    })
-
-    this.socketIoService.GetStatus().subscribe((virar: any) =>{
-      this.virado = virar;
-    })
-  }else{
-    console.log("entrooou")
-  }
+      this.socketIoService.GetStatus().subscribe((virar: any) =>{
+        this.virado = virar;
+      })
+    }else{
+      this.router.navigate([`${this.idSala}`])
+    }
   }
     
 
