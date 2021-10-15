@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocketIoService } from '../socket-io.service';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './enter-game-url.component.html',
   styleUrls: ['./enter-game-url.component.css']
 })
-export class EnterGameUrlComponent implements OnInit {
+export class EnterGameUrlComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,4 +38,8 @@ export class EnterGameUrlComponent implements OnInit {
     this.socketIoService.entrarSessao(sessao)
   }
 
+  ngOnDestroy(): void {
+    localStorage.clear();
+    console.log("Componente destruido")
+  }
 }

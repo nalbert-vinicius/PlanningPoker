@@ -20,6 +20,7 @@ export class GameComponent implements OnInit, OnDestroy {
   virado: boolean = true;
   admin: string;
   tipo: any;
+  sala: any;
 
   constructor(
     private clipboardService: ClipboardService,
@@ -38,6 +39,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this.admin = localStorage.getItem('admin');
       this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
         if(data.idSala = this.idSala){
+          this.sala = data.nomeSala;
           this.tipo = data.tipoCarta;
           this.players = [];
           data.players.forEach(element => {

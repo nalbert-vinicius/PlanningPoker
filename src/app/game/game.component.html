@@ -14,9 +14,15 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <h3 style="text-align: center;">{{ sala }}</h3>
+</div>
 
 <div class="container container-game">
     <div class="row justify-content-md-center">
+        <div class="col">
+a
+        </div>
         <div *ngFor="let element of players" class="col col-md-auto">
             <div *ngIf="element.status == ''" class="col">
                 <div class=" row card card-empty selected-card-margin"></div>
