@@ -20,9 +20,6 @@
 
 <div class="container container-game">
     <div class="row justify-content-md-center">
-        <div class="col">
-a
-        </div>
         <div *ngFor="let element of players" class="col col-md-auto">
             <div *ngIf="element.status == ''" class="col">
                 <div class=" row card card-empty selected-card-margin"></div>
@@ -79,6 +76,10 @@ a
             </div>
           </nav>
     </div>
+</div>
+
+<div class="container" style="text-align: center;">
+    <p>A média de votos foi {{ media }}</p>
 </div>
 
 

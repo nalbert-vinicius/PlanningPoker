@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './enter-game-url.component.html',
   styleUrls: ['./enter-game-url.component.css']
 })
-export class EnterGameUrlComponent implements OnInit, OnDestroy {
+export class EnterGameUrlComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,10 +36,5 @@ export class EnterGameUrlComponent implements OnInit, OnDestroy {
       idSala: this.formEntrarSessao.value.idSala,
     }
     this.socketIoService.entrarSessao(sessao)
-  }
-
-  ngOnDestroy(): void {
-    localStorage.clear();
-    console.log("Componente destruido")
   }
 }

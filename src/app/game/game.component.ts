@@ -21,6 +21,7 @@ export class GameComponent implements OnInit, OnDestroy {
   admin: string;
   tipo: any;
   sala: any;
+  media: any;
 
   constructor(
     private clipboardService: ClipboardService,
@@ -65,6 +66,7 @@ export class GameComponent implements OnInit, OnDestroy {
   votar(card: any){
     this.visible = false;
     this.virado = true;
+    this.media = card !='?'?card:0;
     var data = {
       voto: card,
       idSala: this.idSala,
@@ -74,6 +76,9 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   virarCartas(){
+    if(this.media!=0){
+      this.media = this.media/this.players.length;
+    }
     this.socketIoService.virar({idSala: this.idSala, virar: false});
   }
   
