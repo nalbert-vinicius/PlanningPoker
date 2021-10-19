@@ -52,11 +52,12 @@ export class GameComponent implements OnInit, OnDestroy {
       this.socketIoService.GetVote().subscribe((data: any) =>{
         this.players = [];
         this.players = data.players;
-        console.log(data)
       })
 
-      this.socketIoService.GetStatus().subscribe((virar: any) =>{
-        this.virado = virar;
+      this.socketIoService.GetStatus().subscribe((data: any) =>{
+        this.virado = data.virar;
+        this.media = data.media;
+        console.log("media", data)
       })
     }else{
       this.router.navigate([`${this.idSala}`])
@@ -76,10 +77,11 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   virarCartas(){
+    this.media = 0;
     this.players.forEach(element => {
       this.media = this.media + element.carta
     });
-    console.log(this.media)
+  
     if(this.media!=0){
       this.media = this.media/this.players.length;
     }
