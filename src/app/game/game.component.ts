@@ -52,6 +52,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this.socketIoService.GetVote().subscribe((data: any) =>{
         this.players = [];
         this.players = data.players;
+        console.log(data)
       })
 
       this.socketIoService.GetStatus().subscribe((virar: any) =>{
@@ -66,20 +67,23 @@ export class GameComponent implements OnInit, OnDestroy {
   votar(card: any){
     this.visible = false;
     this.virado = true;
-    this.media = card !='?'?card:0;
     var data = {
       voto: card,
       idSala: this.idSala,
-      player: localStorage.getItem('userName')
+      player: localStorage.getItem('userName'),
     }
     this.socketIoService.votar(data);
   }
 
   virarCartas(){
+    this.players.forEach(element => {
+      this.media = this.media + element.carta
+    });
+    console.log(this.media)
     if(this.media!=0){
       this.media = this.media/this.players.length;
     }
-    this.socketIoService.virar({idSala: this.idSala, virar: false});
+    this.socketIoService.virar({idSala: this.idSala, virar: false, media: this.media});
   }
   
 
