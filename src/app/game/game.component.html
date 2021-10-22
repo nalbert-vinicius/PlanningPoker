@@ -20,7 +20,7 @@
 
 <div class="container container-game">
     <div class="row justify-content-md-center">
-        <div *ngFor="let element of players" class="col col-md-auto">
+        <div *ngFor="let element of players" class="col col-md-auto" [@flipState]="flip">
             <div *ngIf="element.status == ''" class="col">
                 <div class=" row card card-empty selected-card-margin"></div>
                 <div class="col" style="text-align: center;">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div *ngIf="element.status !='' && virado" class="col">
+            <div *ngIf="element.status !='' && virado" class="col" >
                 <div class=" row card card-empty selected-card-margin">
                     <img src="../../assets/card.png" alt="Carta virada">
                 </div>

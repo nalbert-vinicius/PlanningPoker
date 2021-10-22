@@ -2,12 +2,25 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocketIoService } from '../socket-io.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
+  animations: [
+    trigger('flipState', [
+      state('active', style({
+        transform: 'rotateY(179deg)'
+      })),
+      state('inactive', style({
+        transform: 'rotateY(0)'
+      })),
+      transition('active => inactive', animate('500ms ease-out')),
+      transition('inactive => active', animate('500ms ease-in'))
+    ])
+  ]
 })
 export class GameComponent implements OnInit, OnDestroy {
 
@@ -22,6 +35,7 @@ export class GameComponent implements OnInit, OnDestroy {
   tipo: any;
   sala: any;
   media: any;
+  flip: string = 'inactive';
 
   constructor(
     private clipboardService: ClipboardService,
@@ -92,6 +106,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this.media = this.media/this.players.length;
     }
     this.socketIoService.virar({idSala: this.idSala, virar: false, media: this.media});
+    this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   }
   
 

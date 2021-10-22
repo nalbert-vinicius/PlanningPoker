@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +22,8 @@ import { EnterGameUrlComponent } from './enter-game-url/enter-game-url.component
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ClipboardModule
+    ClipboardModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
