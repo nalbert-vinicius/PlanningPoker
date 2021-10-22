@@ -38,9 +38,22 @@ const inserirVoto = (data) =>{
     }
 }
 
+const reiniciarGame = (data) =>{
+    for (let i = 0; i < games.length; i++) {
+        if(games[i].idSala == data){
+            for (let k = 0; k < games[i].players.length; k++){
+                games[i].players[k].carta = 0;
+                games[i].players[k].status = '';
+            }
+            return games[i];
+        }    
+    }
+}
+
 
 module.exports = {
     criarJogo,
     inserirPlayer,
-    inserirVoto
+    inserirVoto,
+    reiniciarGame
 }

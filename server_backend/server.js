@@ -39,6 +39,12 @@ io.on('connection', (socket) =>{
         io.to(data.idSala).emit(socketConst.VIRAR_CARD, gameStatus);
     })
 
+    socket.on(socketConst.REINICIAR_GAME, (data) =>{
+        var gameStatus = gameService.reiniciarGame(data);
+
+        io.to(data).emit(socketConst.REINICIAR_GAME, gameStatus);
+    })
+
 
 
     socket.on('disconnect', () =>{

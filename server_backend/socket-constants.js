@@ -3,5 +3,6 @@ module.exports = {
     ENTRAR_GAME: 'entrarGame',
     VOTAR_GAME: 'votarGame',
     GAME_STATUS: 'gameStatus',
-    VIRAR_CARD: 'virarCarta'
+    VIRAR_CARD: 'virarCarta',
+    REINICIAR_GAME: 'reiniciarGame'
 }

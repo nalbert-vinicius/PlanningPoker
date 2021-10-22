@@ -38,6 +38,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
     if(localStorage.getItem('userName') !=undefined){
       this.admin = localStorage.getItem('admin');
+
       this.socketIoService.GetDadosPlayer().subscribe((data:any) =>{
         if(data.idSala = this.idSala){
           this.sala = data.nomeSala;
@@ -57,8 +58,13 @@ export class GameComponent implements OnInit, OnDestroy {
       this.socketIoService.GetStatus().subscribe((data: any) =>{
         this.virado = data.virar;
         this.media = data.media;
-        console.log("media", data)
       })
+
+      this.socketIoService.ReiniciarGame().subscribe((data: any) =>{
+        this.players = data.players;
+        this.media = undefined;
+      })
+
     }else{
       this.router.navigate([`${this.idSala}`])
     }
@@ -91,6 +97,10 @@ export class GameComponent implements OnInit, OnDestroy {
 
   copiarLink() {
     this.clipboardService.copyFromContent(this.linkClipboard)
+  }
+
+  reiniciarGame(){
+    this.socketIoService.restart(this.idSala)
   }
 
   ngOnDestroy(): void {
