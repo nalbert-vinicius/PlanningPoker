@@ -17,8 +17,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       state('inactive', style({
         transform: 'rotateY(0)'
       })),
-      transition('active => inactive', animate('500ms ease-out')),
-      transition('inactive => active', animate('500ms ease-in'))
+      transition('active => inactive', animate('500ms ease-in')),
+      transition('inactive => active', animate('500ms ease-out'))
     ])
   ]
 })
