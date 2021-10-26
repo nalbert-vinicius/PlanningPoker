@@ -120,7 +120,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     localStorage.clear();
-    console.log("Componente destruido")
   }
 
 }

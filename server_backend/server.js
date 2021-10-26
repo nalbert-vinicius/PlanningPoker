@@ -48,7 +48,6 @@ io.on('connection', (socket) =>{
 
 
     socket.on('disconnect', () =>{
-        console.log("Usuário desconectado!")
     })
 })
 
