@@ -20,7 +20,7 @@
 
 <div class="container container-game">
     <div class="row justify-content-md-center">
-        <div *ngFor="let element of players" class="col col-md-auto" [@flipState]="flip">
+        <div *ngFor="let element of players" class="col col-md-auto">
             <div *ngIf="element.status == ''" class="col">
                 <div class=" row card card-empty selected-card-margin"></div>
                 <div class="col" style="text-align: center;">
@@ -86,7 +86,7 @@
 <!--FiboNormal-->
 <div *ngIf="tipo == 1" class="container">
     <div class="row">
-        <div class="col" *ngFor="let element of Cardfibo" (click)="votar(element)">
+        <div class="col" *ngFor="let element of Cardfibo" (click)="votar(element)" id="card-effect">
             <div class="row card card-poker">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>

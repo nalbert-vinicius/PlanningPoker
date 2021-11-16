@@ -12,7 +12,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('flipState', [
       state('active', style({
-        transform: 'rotateY(179deg)'
+        transform: 'rotateY(180deg)'
       })),
       state('inactive', style({
         transform: 'rotateY(0)'
@@ -35,7 +35,9 @@ export class GameComponent implements OnInit, OnDestroy {
   tipo: any;
   sala: any;
   media: any;
-  flip: string = 'inactive';
+  flip: string = 'active';
+  reverse: string = 'inactive';
+  verifica: boolean = false;
 
   constructor(
     private clipboardService: ClipboardService,
@@ -97,6 +99,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   virarCartas(){
+    this.verifica = true;
     this.media = 0;
     this.players.forEach(element => {
       this.media = this.media + element.carta
