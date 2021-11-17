@@ -38,6 +38,8 @@ export class GameComponent implements OnInit, OnDestroy {
   flip: string = 'active';
   reverse: string = 'inactive';
   verifica: boolean = false;
+  clickedIndex: number;
+
 
   constructor(
     private clipboardService: ClipboardService,
@@ -79,6 +81,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this.socketIoService.ReiniciarGame().subscribe((data: any) =>{
         this.players = data.players;
         this.media = undefined;
+        this.clickedIndex = null;
       })
 
     }else{
@@ -87,7 +90,9 @@ export class GameComponent implements OnInit, OnDestroy {
   }
     
 
-  votar(card: any){
+  votar(card: any,i){
+    this.clickedIndex = i;
+    console.log(i)
     this.visible = false;
     this.virado = true;
     var data = {
@@ -118,6 +123,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   reiniciarGame(){
+    this.clickedIndex = null;
     this.socketIoService.restart(this.idSala)
   }
 

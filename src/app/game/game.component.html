@@ -78,16 +78,19 @@
     </div>
 </div>
 
-<div *ngIf="media" class="container" style="text-align: center;">
-    <p>A média de votos foi {{ media }}</p>
+<div class="container" style="height: 115px;">
+    <div *ngIf="media" class="div-votacao">
+        <p>A média de votos foi {{ media }}</p>
+    </div>
 </div>
+
 
 
 <!--FiboNormal-->
 <div *ngIf="tipo == 1" class="container">
     <div class="row">
-        <div class="col" *ngFor="let element of Cardfibo" (click)="votar(element)" id="card-effect">
-            <div class="row card card-poker">
+        <div class="col" *ngFor="let element of Cardfibo; let i = index" (click)="votar(element, i)" id="card-effect">
+            <div class="row card card-poker" [ngClass]="{'active': clickedIndex == i}">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>
                 </div>
@@ -106,7 +109,7 @@
 
 <div *ngIf="tipo == 2" class="container">
     <div class="row">
-        <div class="col" *ngFor="let element of CardSmallFibo">
+        <div class="col" *ngFor="let element of CardSmallFibo; let i = index" (click)="votar(element, i)" [ngClass]="{'active': clickedIndex == i}" id="card-effect">
             <div class="row card card-poker">
                 <div class="col">
                     <i class="bi bi-suit-spade"></i>

@@ -1,6 +1,6 @@
 .container-game{
-    height: 20rem;
-    margin-top: 3rem;
+    height: 16rem;
+    margin-top: 2rem;
 }
 
 .card-poker{
@@ -50,6 +50,20 @@
     padding: 5px;
 }
 
+.active {
+    top: -15px!important;
+    box-shadow:
+                1px 1px #a5c8e5,
+                2px 2px #a5c8e5,
+                3px 3px #a5c8e5;
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+}
+  
+.div-votacao{
+    text-align: center; 
+    background-color: #5492e082;
+}
 
 #card-effect{
     position:relative;
