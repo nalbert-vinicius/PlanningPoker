@@ -1,6 +1,11 @@
 .back-color{
     background-color: #0000004d!important;
-    height: 39rem;
+    height: 41rem;
+}
+
+body{
+    background-color: #0000004d!important;
+    height: 100%;
 }
 
 .align-item-navbar{

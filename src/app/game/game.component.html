@@ -44,7 +44,8 @@
                     </div>
                     
                     <div class="col" style="text-align: center;">
-                        {{element.carta}}
+                        <p *ngIf="element.carta !='?'">{{element.carta}}</p>
+                        <i *ngIf="element.carta =='?'" class="bi bi-cup-straw"></i>
                     </div>
         
                     <div class="col" style="text-align: right;">
@@ -87,7 +88,7 @@
 
 
 <!--FiboNormal-->
-<div *ngIf="tipo == 1" class="container">
+<div *ngIf="tipo == 1 && !travarCarta" class="container" >
     <div class="row">
         <div class="col" *ngFor="let element of Cardfibo; let i = index" (click)="votar(element, i)" id="card-effect">
             <div class="row card card-poker" [ngClass]="{'active': clickedIndex == i}">
@@ -96,7 +97,8 @@
                 </div>
                 
                 <div class="col" style="text-align: center;">
-                    <p>{{element}}</p>
+                    <p *ngIf="element !='?'">{{element}}</p>
+                    <i *ngIf="element =='?'" class="bi bi-cup-straw"></i>
                 </div>
                 
                 <div class="col" style="text-align: right;">
@@ -107,7 +109,7 @@
     </div>
 </div>
 
-<div *ngIf="tipo == 2" class="container">
+<div *ngIf="tipo == 2 && !travarCarta" class="container">
     <div class="row">
         <div class="col" *ngFor="let element of CardSmallFibo; let i = index" (click)="votar(element, i)" [ngClass]="{'active': clickedIndex == i}" id="card-effect">
             <div class="row card card-poker">
@@ -116,7 +118,8 @@
                 </div>
                 
                 <div class="col" style="text-align: center;">
-                    <p>{{element}}</p>
+                    <p *ngIf="element !='?'">{{element}}</p>
+                    <i *ngIf="element =='?'" class="bi bi-cup-straw"></i>
                 </div>
                 
                 <div class="col" style="text-align: right;">

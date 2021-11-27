@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
     var sessao = {
       nomeUsuario: this.formEntrarSessao.value.nomeUsuario,
       idSala: this.formEntrarSessao.value.idSala,
+      travarCarta: this.formEntrarSessao.value.espectador
     }
     this.socketIoService.entrarSessao(sessao)
   }

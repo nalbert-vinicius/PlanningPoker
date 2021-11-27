@@ -35,7 +35,7 @@ io.on('connection', (socket) =>{
     })
 
     socket.on(socketConst.VIRAR_CARD, (data) =>{
-        var gameStatus = {virar: data.virar, media:data.media}
+        var gameStatus = {virar: data.virar, media:data.media, travarCarta: data.travarCarta}
         io.to(data.idSala).emit(socketConst.VIRAR_CARD, gameStatus);
     })
 

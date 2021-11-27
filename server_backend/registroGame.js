@@ -7,7 +7,7 @@ const criarJogo = (data) =>{
         idSala: data.idSala,
         tipoCarta: data.tipoCarta,
         espectador: data.espectador,
-        players: [{player: data.nomeUsuario, carta: 0, status: ''}],
+        players: [{player: data.nomeUsuario, carta: 0, status: '', travarCarta: data.espectador}],
     }
     games.push(gameStatus);
     return  gameStatus;
@@ -16,7 +16,7 @@ const criarJogo = (data) =>{
 const inserirPlayer = (data) =>{
     for (let i = 0; i < games.length; i++) {
         if(games[i].idSala == data.idSala){
-            games[i].players.push({player: data.nomeUsuario, carta: 0, status: ''})
+            games[i].players.push({player: data.nomeUsuario, carta: 0, status: '', travarCarta: data.travarCarta})
             return  games[i];
         }
     }

@@ -39,6 +39,7 @@ export class GameComponent implements OnInit, OnDestroy {
   reverse: string = 'inactive';
   verifica: boolean = false;
   clickedIndex: number;
+  travarCarta: boolean;
 
 
   constructor(
@@ -63,6 +64,10 @@ export class GameComponent implements OnInit, OnDestroy {
           this.tipo = data.tipoCarta;
           this.players = [];
           data.players.forEach(element => {
+            console.log(element)
+            if(element.player == localStorage.getItem('userName')){
+              this.travarCarta = element.travarCarta;
+            }
             this.players.push(element)
           });
         }
@@ -74,6 +79,7 @@ export class GameComponent implements OnInit, OnDestroy {
       })
 
       this.socketIoService.GetStatus().subscribe((data: any) =>{
+        this.travarCarta = data.travarCarta;
         this.virado = data.virar;
         this.media = data.media;
       })
@@ -92,7 +98,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   votar(card: any,i){
     this.clickedIndex = i;
-    console.log(i)
     this.visible = false;
     this.virado = true;
     var data = {
@@ -104,6 +109,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   virarCartas(){
+    this.travarCarta = true;
     this.verifica = true;
     this.media = 0;
     this.players.forEach(element => {
@@ -113,7 +119,7 @@ export class GameComponent implements OnInit, OnDestroy {
     if(this.media!=0){
       this.media = this.media/this.players.length;
     }
-    this.socketIoService.virar({idSala: this.idSala, virar: false, media: this.media});
+    this.socketIoService.virar({idSala: this.idSala, virar: false, media: this.media, travarCarta: this.travarCarta});
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   }
   
