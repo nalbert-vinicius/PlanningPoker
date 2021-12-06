@@ -75,6 +75,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
       this.socketIoService.GetVote().subscribe((data: any) =>{
         this.players = [];
+        this.virado = true;
         this.players = data.players;
       })
 
@@ -85,6 +86,7 @@ export class GameComponent implements OnInit, OnDestroy {
       })
 
       this.socketIoService.ReiniciarGame().subscribe((data: any) =>{
+        console.log("reiniciou", data)
         this.players = data.players;
         this.media = undefined;
         this.clickedIndex = null;
@@ -104,12 +106,12 @@ export class GameComponent implements OnInit, OnDestroy {
       voto: card,
       idSala: this.idSala,
       player: localStorage.getItem('userName'),
+      virado: true
     }
     this.socketIoService.votar(data);
   }
 
   virarCartas(){
-    this.travarCarta = true;
     this.verifica = true;
     this.media = 0;
     this.players.forEach(element => {

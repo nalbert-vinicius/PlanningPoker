@@ -30,7 +30,7 @@ io.on('connection', (socket) =>{
     })
 
     socket.on(socketConst.VOTAR_GAME, (data) =>{
-        var gameStatus = gameService.inserirVoto(data)
+        var gameStatus = gameService.inserirVoto(data);
         io.to(data.idSala).emit(socketConst.VOTAR_GAME, gameStatus);
     })
 
