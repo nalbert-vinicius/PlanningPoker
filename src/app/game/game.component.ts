@@ -64,7 +64,6 @@ export class GameComponent implements OnInit, OnDestroy {
           this.tipo = data.tipoCarta;
           this.players = [];
           data.players.forEach(element => {
-            console.log(element)
             if(element.player == localStorage.getItem('userName')){
               this.travarCarta = element.travarCarta;
             }
@@ -74,6 +73,7 @@ export class GameComponent implements OnInit, OnDestroy {
       });
 
       this.socketIoService.GetVote().subscribe((data: any) =>{
+        debugger
         this.players = [];
         this.virado = true;
         this.players = data.players;
@@ -86,7 +86,6 @@ export class GameComponent implements OnInit, OnDestroy {
       })
 
       this.socketIoService.ReiniciarGame().subscribe((data: any) =>{
-        console.log("reiniciou", data)
         this.players = data.players;
         this.media = undefined;
         this.clickedIndex = null;

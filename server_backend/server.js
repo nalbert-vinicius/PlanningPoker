@@ -17,13 +17,13 @@ const io = require('socket.io')(http, {cors: {origin: '*'}});
 io.on('connection', (socket) =>{
 
     socket.on(socketConst.CRIAR_GAME, (data) =>{
-        var gameStatus = gameService.criarJogo(data)
+        var gameStatus = gameService.criarJogo(data, socket.id)
         socket.join(data.idSala);
         io.to(data.idSala).emit(socketConst.ENTRAR_GAME, gameStatus)
     })
 
     socket.on(socketConst.ENTRAR_GAME, (data) =>{
-      var gameStatus = gameService.inserirPlayer(data)
+      var gameStatus = gameService.inserirPlayer(data, socket.id)
       socket.join(data.idSala);
       //emite para a sala do id especifico
       io.to(data.idSala).emit(socketConst.ENTRAR_GAME, gameStatus)
@@ -41,13 +41,15 @@ io.on('connection', (socket) =>{
 
     socket.on(socketConst.REINICIAR_GAME, (data) =>{
         var gameStatus = gameService.reiniciarGame(data);
-
         io.to(data).emit(socketConst.REINICIAR_GAME, gameStatus);
     })
 
 
 
-    socket.on('disconnect', () =>{
+    socket.on('disconnect', (data) =>{
+        console.log("desconectado")
+        var gameStatus = gameService.removerPlayer(socket.id)
+        io.to(gameStatus.idSala).emit(socketConst.ENTRAR_GAME, gameStatus)
     })
 })
 
