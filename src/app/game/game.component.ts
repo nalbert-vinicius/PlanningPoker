@@ -40,6 +40,7 @@ export class GameComponent implements OnInit, OnDestroy {
   verifica: boolean = false;
   clickedIndex: number;
   travarCarta: boolean;
+  cafe: boolean = false;
 
 
   constructor(
@@ -119,7 +120,9 @@ export class GameComponent implements OnInit, OnDestroy {
   
     if(this.media!=0){
       this.media = this.media/this.players.length;
+      this.media = this.media.toFixed(2);
     }
+
     this.socketIoService.virar({idSala: this.idSala, virar: false, media: this.media, travarCarta: this.travarCarta});
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   }
@@ -130,6 +133,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   reiniciarGame(){
+    this.cafe = false
     this.clickedIndex = null;
     this.socketIoService.restart(this.idSala)
   }
