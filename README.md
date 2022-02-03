@@ -4,7 +4,7 @@
 ## Tecnologias
  - Angular
  - Bootstrap
- - WebSocket - socketIO
+ - WebSocket - Socket.IO
 
 O front está rodando por padrão na porta 4200
 O backend está rodando na porta 5000
