@@ -25,10 +25,10 @@ Versão Angular 11.2.14
 Versão Node 15.10.0
 
 ## Front - Tela inicial
-![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/telaInicial.png)
+![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/telaInicial.PNG)
 
 ## Front - Tela inicial entrar via modal
-![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/EntrarSecao.png)
+![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/EntrarSecao.PNG)
 
 ## Front - Tela votação
-![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/Votacao.png)
+![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/Votacao.PNG)
