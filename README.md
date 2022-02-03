@@ -1,27 +1,34 @@
-# PlanningPoker
+# Pojeto Planning Poker
+ Projeto Plannin Poker utilizado em metodologias ágeis, não está 100% desenvolvido e ainda falta melhorias no front e backend.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+## Tecnologias
+ - Angular
+ - Bootstrap
+ - WebSocket - socketIO
 
-## Development server
+O front está rodando por padrão na porta 4200
+O backend está rodando na porta 5000
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Rodar projeto Front
 
-## Code scaffolding
+1º git clone https://github.com/nalbert-vinicius/PlanningPoker.git <br>
+2º npm install <br>
+3º ng serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Rodar Backend
 
-## Build
+1º git clone https://github.com/nalbert-vinicius/PlanningPoker.git <br>
+2º npm install <br>
+3º node server.js ou nodemon server.js
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Versão Angular 11.2.14
+Versão Node 15.10.0
 
-## Running unit tests
+## Front - Tela inicial
+![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/telaInicial.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Front - Tela inicial entrar via modal
+![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/EntrarSecao.png)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Front - Tela votação
+![Pojeto Planning Poker](https://github.com/nalbert-vinicius/PlanningPoker/blob/master/img/Votacao.png)
